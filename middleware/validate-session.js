@@ -1,3 +1,4 @@
+
 const jwt = require("jsonwebtoken")
 const User = require("../model/user.model")
 
@@ -35,3 +36,4 @@ const validateSession = async(req,res,next)=>{
 }
 
 module.exports = validateSession
+

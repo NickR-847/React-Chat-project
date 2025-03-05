@@ -1,6 +1,7 @@
 //room controller
 const router = require("express").Router();
 const Room = require("../model/room.model");
+
 const validateSession = require("../middleware/validate-session");
 
 
@@ -106,3 +107,4 @@ router.delete("/delete/:id", async (req, res) => {
 });
 
 module.exports = router;
+

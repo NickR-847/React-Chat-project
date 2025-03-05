@@ -1,11 +1,10 @@
 //message controller
 const router = require("express").Router();
 
+
 const validateSession = require("../middleware/validate-session")
 
 const Message = require("../model/message.model");
-
-
 
 
 
@@ -15,6 +14,7 @@ const Message = require("../model/message.model");
 // add message route
 // Request type: POST
 // http://localhost:4000/message/add
+
 
 
 router.post("/add/:roomId", validateSession,  async (req, res) => {
@@ -51,10 +51,12 @@ router.post("/add/:roomId", validateSession,  async (req, res) => {
 
     
     res.json({ message: `route works`,  message: newMessage });
+
   } catch (error) {
     res.json({ message: error.message });
   }
 });
+
 
 //!Display all route
 //ocalhost:4000/message/view-all
