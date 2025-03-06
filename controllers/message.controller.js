@@ -39,7 +39,7 @@ router.post("/add/:roomId", validateSession, async (req, res) => {
 });
 
 //!Display all messages route
-//ocalhost:4000/message/view-all
+//localhost:4000/message/view-all
 router.get("/view-all", validateSession, async (req, res) => {
   try {
     //1.
@@ -48,14 +48,14 @@ router.get("/view-all", validateSession, async (req, res) => {
 
     //2.
     //add to res.json variable (pets)
-    res.json({ message: `route works`, messages: messages });
+    res.json({ message: `All messages displayed.`, messages: messages });
   } catch (error) {
     res.json({ message: error.message });
   }
 });
 
-// Endpoint to view messages by room
-// localhost:4000/message/room/
+// !Endpoint to view messages by room
+// localhost:4000/message/room/:roomid
 router.get("/room/:roomId", async (req, res) => {
   try {
     const roomId = req.params.roomId;
@@ -63,13 +63,13 @@ router.get("/room/:roomId", async (req, res) => {
     //variable to store response using MODEL and FIND method
     const messages = await Message.find({ room: roomId });
 
-    res.json({ message: `route works`, messages: messages });
+    res.json({ message: `Room found successfully!`, messages: messages });
   } catch (error) {
     res.json({ message: error.message });
   }
 });
 
-//!Endpoint for delete/ need help
+//!Endpoint for delete/ 
 // localhost:4000/message/delete/:id
 router.delete("/delete/:id", validateSession, async (req, res) => {
   try {
@@ -85,7 +85,7 @@ router.delete("/delete/:id", validateSession, async (req, res) => {
     console.log(message);
 
     res.json({
-      message: `route works`,
+      message: `Message Deleted successfully!`,
       deleteMessage:
         message.deletedCount > 0 ? "Message Deleted" : "Message Not Found",
     });
@@ -116,11 +116,11 @@ router.put("/update/:id", validateSession, async (req, res) => {
 
     //5.
     //use Model's method of findByIdAndUpdate(filter,data, options) & store in variale
-    const message = await Message.findOneAndUpdate(filter, data, options);
+    const updatedMessage = await Message.findOneAndUpdate(filter, data, options);
 
     //6.
     //update res.json with message info
-    res.json({ message: `route works`, message: message });
+    res.json({ message: `Message Updated Successfully!`, updatedMessage: updatedMessage });
   } catch (error) {
     res.json({ message: error.message });
   }
