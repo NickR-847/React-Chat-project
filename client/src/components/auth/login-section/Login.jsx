@@ -24,19 +24,19 @@ const Login = (props) => {
         email: email,
         password: password,
       };
-       // Request Options
-       let requestOption = {
+      // Request Options
+      let requestOption = {
         method: "POST",
         headers: myHeaders,
         body: JSON.stringify(body),
       };
-       // Send Request
-       let response = await fetch(API_LOGIN, requestOption);
-       // Response Object
-       let data = await response.json();
-       // Update Token from the App.jsx file
-       console.log(data);
-       props.updateToken(data.sessionToken);
+      // Send Request
+      let response = await fetch(API_LOGIN, requestOption);
+      // Response Object
+      let data = await response.json();
+      // Update Token from the App.jsx file
+      console.log(data);
+      props.updateToken(data.sessionToken);
     } catch (error) {}
   }
 
@@ -87,8 +87,9 @@ const Login = (props) => {
             {/* Form Group End Password */}
 
             {/* Button Here */}
-            
-
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
           </Form>
         </div>
       </div>
@@ -97,4 +98,3 @@ const Login = (props) => {
 };
 
 export default Login;
-
