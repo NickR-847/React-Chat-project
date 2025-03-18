@@ -21,6 +21,7 @@ router.post("/add/:roomId", validateSession, async (req, res) => {
     const message = new Message({
       // look up on how to do date in javascript = Date.now()
       when: Date(),
+      // Date.now()
       user: req.user._id,
       room: req.params.roomId,
       body: body,
@@ -56,6 +57,7 @@ router.get("/view-all", validateSession, async (req, res) => {
 });
 
 // !Endpoint to view messages by room
+// Validate Session
 // localhost:4000/message/room/:roomid
 router.get("/room/:roomId", validateSession, async (req, res) => {
   try {

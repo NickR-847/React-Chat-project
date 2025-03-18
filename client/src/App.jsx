@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import './App.css';
 import Auth from "./components/auth/Auth";
@@ -35,6 +36,7 @@ function App() {
       
        
       </header>
+
     </div>
   );
 }
