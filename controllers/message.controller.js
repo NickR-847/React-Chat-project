@@ -19,6 +19,7 @@ router.post("/add/:roomId", validateSession, async (req, res) => {
 
     // create variable & use User model to create a new user
     const message = new Message({
+      // look up on how to do date in javascript = Date.now()
       when: Date(),
       user: req.user._id,
       room: req.params.roomId,
@@ -56,14 +57,15 @@ router.get("/view-all", validateSession, async (req, res) => {
 
 // !Endpoint to view messages by room
 // localhost:4000/message/room/:roomid
-router.get("/room/:roomId", async (req, res) => {
+router.get("/room/:roomId", validateSession, async (req, res) => {
   try {
     const roomId = req.params.roomId;
+    
 
     //variable to store response using MODEL and FIND method
     const messages = await Message.find({ room: roomId });
 
-    res.json({ message: `Room found successfully!`, messages: messages });
+    res.json({ message: `Messages found successfully!`, messages: messages });
   } catch (error) {
     res.json({ message: error.message });
   }

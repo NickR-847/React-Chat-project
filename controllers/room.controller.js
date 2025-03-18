@@ -38,7 +38,7 @@ router.post("/add", validateSession, async (req, res) => {
 
 //!display all rooms endpoint
 //http://localhost:4000/room/view-all
-router.get("/view-all", async (req, res) => {
+router.get("/view-all", validateSession, async (req, res) => {
   try {
     //1. variable to store response using MODEL and FIND method
     const rooms = await Room.find({});
@@ -53,7 +53,7 @@ router.get("/view-all", async (req, res) => {
 
 //! UPDATE ROOM
 //localhost:4000/room/update/:id
-router.put("/update/:id", async (req, res) => {
+router.put("/update/:id", validateSession, async (req, res) => {
   try {
     //1. store id in a variable
     const id = req.params.id;
@@ -79,7 +79,7 @@ router.put("/update/:id", async (req, res) => {
 
 //!DELETE ROOM
 //localhost:4000/room/delete/:id
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete/:id", validateSession, async (req, res) => {
   try {
     // find the room to get room name
     const roomToDelete = await Room.findById(req.params.id);

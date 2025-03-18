@@ -1,6 +1,6 @@
 //user controller
 const router = require("express").Router();
-
+const validateSession = require("../middleware/validate-session");
 const User = require("../model/user.model");
 
 // import jsonwebtoken for creating a token
@@ -11,7 +11,7 @@ const bcrypt = require("bcrypt");
 // Endpoint: "http://localhost:4000/user/register"
 // Request Type: POST
 
-router.post("/register", async (req, res) => {
+router.post("/register",  async (req, res) => {
   try {
     // Destructure
     const { firstName, lastName, email, password } = req.body;
@@ -73,7 +73,7 @@ router.post("/login", async (req, res) => {
 
 //! route for delete
 // http://localhost:4000/user/delete/:id
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete/:id", validateSession, async (req, res) => {
   try {
     //1.
     //using model method of deleteOne()/ seeing id show up through url
@@ -96,7 +96,7 @@ router.delete("/delete/:id", async (req, res) => {
 
 //!route for update/ 
 // http://localhost:4000/user/update/:id
-router.put("/update/:id", async (req, res) => {
+router.put("/update/:id", validateSession, async (req, res) => {
   try {
     //1. store id in a variable
     const id = req.params.id;
