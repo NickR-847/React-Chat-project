@@ -20,13 +20,14 @@ db.on("error", console.error.bind(console, "Connection error"));
 
 //middleware
 app.use(express.json());
+app.use(require("cors")())
 
 //controller routes
 app.use("/message", messageController)
 
  app.use("/room", roomController)
 
-// app.use("/room", roomController)
+ 
 
 app.use("/user", userController)
 
