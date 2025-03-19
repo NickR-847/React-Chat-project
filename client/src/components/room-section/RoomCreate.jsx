@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { API_ROOM_CREATE } from "../../constants/endpoints";
 import RoomButton from "../custom/RoomButton";
 
+// ! IMPORT FROM REACTSTRAP FOR FORM HANDLING
+import { Form, FormGroup, Label, Input } from "reactstrap";
+
 const RoomCreate = (props) => {
   //state variables
   //usf
@@ -16,8 +19,8 @@ const RoomCreate = (props) => {
       // Headers
       let myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
-      //!make sure to add authorization to headers if you need token for route
       myHeaders.append("Authorization", props.token);
+      //!make sure to add authorization to headers if you need token for route
 
       //request body
       let body = {
@@ -43,7 +46,7 @@ const RoomCreate = (props) => {
 
   return (
     <>
-      <h1> Hello from RoomCreate </h1>
+        <h2>Create A New Room</h2>
       <Form onSubmit={handleSubmit}>
       <FormGroup>
             <Label for="Name">Name</Label>
@@ -56,7 +59,7 @@ const RoomCreate = (props) => {
               id="name"
               name="name"
               placeholder="Enter Room Name"
-              type="name"
+              type="text"
             />
           </FormGroup>
 
@@ -74,9 +77,7 @@ const RoomCreate = (props) => {
               type="text-area"
             />
           </FormGroup>
-          <RoomButton onClick={handleSubmit}>Submit </RoomButton>
-
-
+          <RoomButton onClick={handleSubmit}>Submit</RoomButton>
          </Form>
 
           

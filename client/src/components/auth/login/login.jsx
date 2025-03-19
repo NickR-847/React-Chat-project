@@ -7,8 +7,9 @@ const Login = (props) => {
   //state variables for email and password using the useState hook.
   //usf shortcut
   //email & password from postman to test
-  const [email, setEmail] = useState("1jwick@puppyfinder.com");
-  const [password, setPassword] = useState("focusCommitment1979");
+
+  const [email, setEmail] = useState("nick@nick.com");
+  const [password, setPassword] = useState("1234");
 
   function handleSubmit(e) {
     e.preventDefault();

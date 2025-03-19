@@ -6,10 +6,10 @@ import RoomButton from "../../custom/RoomButton";
 //sfc
 const SignUp = (props) => {
   // Create state variables for first name, last name, email, and password using the useState hook.
-  const [firstname, setFirstName] = useState("John");
-  const [lastname, setLastName] = useState("Wick");
-  const [email, setEmail] = useState("1jwick@puppyfinder.com");
-  const [password, setPassword] = useState("focusCommitment1979");
+  const [email, setEmail] = useState("nick@russotti.com");
+  const [password, setPassword] = useState("1234");
+  const [firstName, setFirstName] = useState("Nicholas");
+  const [lastName, setLastName] = useState("Russotti");
 
   // function called handleSubmit that will console.log("Click Worked")
   function handleSubmit(e) {
@@ -24,8 +24,8 @@ const SignUp = (props) => {
       // Request Body
       //grabbbing from postman
       let body = {
-        firstName: firstname,
-        lastName: lastname,
+        firstName: firstName,
+        lastName: lastName,
         email: email,
         password: password,
       };
@@ -56,7 +56,7 @@ const SignUp = (props) => {
             <FormGroup>
               <Label for="firstName">First Name</Label>
               <Input
-              value={firstname}
+              value={firstName}
               onChange={(e)=>{
                 setFirstName(e.target.value)
               }}
@@ -72,7 +72,7 @@ const SignUp = (props) => {
             <FormGroup>
               <Label for="lastName">Last Name</Label>
               <Input
-              value={lastname}
+              value={lastName}
               onChange={(e)=>{
                 setLastName(e.target.value)
               }}

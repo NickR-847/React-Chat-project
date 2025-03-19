@@ -1,0 +1,15 @@
+.room-button {
+    display: inline-block;
+    background-color: var(--primary);
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  .room-button:hover {
+    opacity: 0.8;
+  }
+  

@@ -9,7 +9,7 @@ const Auth = (props) => {
         <>
            <h1> Hello from Auth </h1>
 
-           <Login />
+           <Login/>
            <SignUp/>
 
           
