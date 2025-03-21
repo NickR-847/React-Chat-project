@@ -9,12 +9,14 @@ export const API_ROOM_VIEW_ALL = `${API}/room/view-all`;
 
 export const API_ROOM_CREATE = `${API}/room/add`;
 
-export const API_ROOM_UPDATE = ``;
+export const API_ROOM_UPDATE = `${API}/room/update/:id`;
 
-export const API_ROOM_DELETE = ``;
+export const API_ROOM_DELETE = `${API}/room/delete/:id`;
 
-export const API_MESSAGE_CREATE = ``;
+export const API_MESSAGE_CREATE = `${API}/message/add/:roomId`;
 
-export const API_MESSAGE_UPDATE = ``;
+export const API_MESSAGE_UPDATE = ``; 
 
-export const API_MESSAGE_DELETE = ``;
+export const API_MESSAGE_DELETE = `${API}/message/delete/:id`;
+
+export const API_MESSAGE_VIEW_ALL = `${API}//message/view-all`
