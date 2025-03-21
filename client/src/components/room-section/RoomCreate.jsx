@@ -41,48 +41,55 @@ const RoomCreate = (props) => {
       // Response Object
       let data = await response.json();
       console.log(data);
-    } catch (error) {}
+
+      // Clearing input field after submission
+      setName("");
+      setDescription("");
+      
+      // Refresh room list
+      if (props.fetchRoomFeed) {
+        props.fetchRoomFeed();
+      }
+    } catch (error) {
+      console.error("Error during room creation:", error);
+    }
   }
 
   return (
     <>
-        <h2>Create A New Room</h2>
+      <h2>Create A New Room</h2>
       <Form onSubmit={handleSubmit}>
-      <FormGroup>
-            <Label for="Name">Name</Label>
-            {/* Add a value & assign to title (read only), onChange function to update state (setter = setTitle) */}
-            <Input
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-              id="name"
-              name="name"
-              placeholder="Enter Room Name"
-              type="text"
-            />
-          </FormGroup>
-
-          <FormGroup>
-            <Label for="Description">Description</Label>
-            {/* Add a value & assign to description (read only), onChange function to update state (setter = setDescription) */}
-            <Input
-              value={description}
-              onChange={(e) => {
-                setDescription(e.target.value);
-              }}
-              id="description"
-              name="description"
-              placeholder="Enter Description"
-              type="text-area"
-            />
-          </FormGroup>
-          <RoomButton onClick={handleSubmit}>Submit</RoomButton>
-         </Form>
-
+        <FormGroup>
+          <Label for="Name">Name</Label>
           
+          <Input
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+            id="name"
+            name="name"
+            placeholder="Enter Room Name"
+            type="text"
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <Label for="Description">Description</Label>
+          <Input
+            value={description}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+            id="description"
+            name="description"
+            placeholder="Enter Description"
+            type="textarea"
+          />
+        </FormGroup>
+        <RoomButton type="submit">Submit</RoomButton>
+      </Form>
     </>
   );
 };
-
 export default RoomCreate;

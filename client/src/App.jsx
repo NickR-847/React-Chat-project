@@ -1,42 +1,68 @@
-
 import React, { useState, useEffect } from "react";
-import './App.css';
+import "./App.css";
 import Auth from "./components/auth/Auth";
 import RoomIndex from "./components/room-section/RoomIndex";
-
-
+import MessageIndex from "./components/message-section/MessageIndex";
+import { Container, Row, Col } from "reactstrap";
 
 function App() {
-  //state variable called token and a function called setToken using the useState hook.
+  // State to store the authentication token
   const [token, setToken] = useState("");
 
-  // function called updateToken that will update the token state variable and save the token to local storage. The function should take in a newToken parameter
+  // State to track which room is selected
+  const [selectedRoom, setSelectedRoom] = useState(null);
 
-  function updateToken(newToken){
-    setToken(newToken)
-    localStorage.setItem("token", newToken)
+  function updateToken(newToken) {
+    console.log("Setting token in App:", newToken);
+    setToken(newToken);
+    localStorage.setItem("token", newToken);
+    console.log("Token state after update:", token);
+
+    // Check  if it's in localStorage
+    console.log("Token in localStorage:", localStorage.getItem("token"));
   }
 
-  //useEffect hook that will run when the component mounts and only run once. The useEffect hook should check if there is a token in local storage and if there is, it should set the token state variable to the token in local storage
-  useEffect(() => {
-      let storedToken =localStorage.getItem("token")
-      if(storedToken){
-        //updating
-        setToken(storedToken)
-      }
-  }, []);
+  // Function to handle room selection
+  function handleRoomSelect(room) {
+    setSelectedRoom(room);
+  }
 
+  // Check for existing token in localStorage when app loads
+  useEffect(() => {
+    let storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, []);
 
   return (
     <div className="App">
-      <header className="App-header">
-      {!token &&<Auth updateToken={updateToken}/>}
-      {token &&<RoomIndex token={token}/>}
-      
-      
-       
-      </header>
-
+      {/* ! Import and mount Auth */}
+      {!token ? (
+        <Auth updateToken={updateToken} />
+      ) : (
+        <>
+          <Container fluid>
+            <Row>
+              {/* column broken into 12 segments : 4 for rooms 8 for messages */}
+              <Col md="4">
+                {/* Left column  for room list */}
+                <RoomIndex token={token} onRoomSelect={handleRoomSelect} />
+              </Col>
+              <Col md="8">
+                {/* Right column for message feed */}
+                {selectedRoom ? (
+                  <MessageIndex token={token} selectedRoom={selectedRoom} />
+                ) : (
+                  <div className="text-center p-5 secondary-background rounded">
+                    <h3>Select a room to start messaging</h3>
+                  </div>
+                )}
+              </Col>
+            </Row>
+          </Container>
+        </>
+      )}
     </div>
   );
 }

@@ -36,7 +36,7 @@ const RoomDelete = (props) => {
     <>
     <div>
      <h2 className="font-primary text-center">Delete Room</h2>
-      <RoomButton onClick={RoomDelete}>Delete</RoomButton>
+      <RoomButton onClick={roomDelete}>Delete</RoomButton>
       </div>
     </>
   );
