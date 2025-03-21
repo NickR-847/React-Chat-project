@@ -20,7 +20,8 @@ const MessageCreate = (props) => {
         // Request body
         let body = {
           content,
-          room: props.roomId, //  passing roomId as a prop
+          //  passing roomId as a prop
+          room: props.roomId, 
         }; 
   
         // Request Options

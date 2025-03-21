@@ -6,10 +6,10 @@ import RoomButton from "../../custom/RoomButton";
 //sfc
 const SignUp = (props) => {
   // Create state variables for first name, last name, email, and password using the useState hook.
-  const [email, setEmail] = useState("nick@russotti.com");
-  const [password, setPassword] = useState("1234");
-  const [firstName, setFirstName] = useState("Nicholas");
-  const [lastName, setLastName] = useState("Russotti");
+  const [email, setEmail] = useState("1jwick@puppyfinder.com");
+  const [password, setPassword] = useState("focusCommitment1979");
+  const [firstName, setFirstName] = useState("John");
+  const [lastName, setLastName] = useState("Wick");
 
   // function called handleSubmit that will console.log("Click Worked")
   function handleSubmit(e) {

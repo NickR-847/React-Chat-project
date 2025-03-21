@@ -15,6 +15,9 @@ export const API_ROOM_DELETE = `${API}/room/delete/:id`;
 
 export const API_MESSAGE_CREATE = `${API}/message/add/:roomId`;
 
+export const API_MESSAGE_VIEW_ALL = `${API}//message/view-all`
+
 export const API_MESSAGE_UPDATE = `${API}/update/:id`;
 
 export const API_MESSAGE_DELETE = `${API}/message/delete/:id`;
+
