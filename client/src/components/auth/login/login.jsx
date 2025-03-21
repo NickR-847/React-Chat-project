@@ -25,76 +25,71 @@ const Login = (props) => {
       // Request Body
       //grabbbing from postman
       let body = {
-        email : email,
-        password : password
-      }
+        email: email,
+        password: password,
+      };
 
       // Request Options
       let requestOption = {
         method: "POST",
         headers: myHeaders,
-        body: JSON.stringify(body)
-      }
+        body: JSON.stringify(body),
+      };
 
       // Send Request
-      let response = await fetch(API_LOGIN, requestOption)
+      let response = await fetch(API_LOGIN, requestOption);
 
       // Response Object
-      let data = await response.json()
+      let data = await response.json();
 
       // Update Token from the App.jsx file
       console.log(data);
-      props.updateToken(data.sessionToken)
-
-
-    } catch (error) {}
+      props.updateToken(data.sessionToken);
+  } catch (error) {
+    console.error("Login error:", error);
   }
-
+}
   return (
     <>
-   
-      <h1> Hello from login </h1>
+      <h2 className="text-center font-primary bold">LOGIN FORM</h2>
       {/* form */}
       <Form onSubmit={handleSubmit}>
-            <FormGroup>
-              <Label for="exampleEmail">Email</Label>
-              {/* Add a value & assign to email (read only), onChange function to update state (setter = setEmail) */}
-              <Input
-                // standard lines 57 * 58 with input fields
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                id="email"
-                name="email"
-                placeholder="Enter Email"
-                type="email"
-              />
-            </FormGroup>
-            {/* Form Group for Email */}
+        <FormGroup>
+          <Label for="email">Email</Label>
+          {/* TODO add a value and assign it to email; onChange function to update the state */}
+          <Input
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            id="email"
+            name="email"
+            placeholder="Enter email"
+            type="email"
+          />
+        </FormGroup>
+        {/* Form Group for Email */}
 
-            {/* Form Group End Email */}
-            {/* ----------------------------- */}
-            {/* Form Group for Password */}
-            <FormGroup>
-    <Label for="Password">
-      Password
-    </Label>
-    <Input
-    value={password}
-    onChange={(e)=>{
-      setPassword(e.target.value)
-    }}
-      id="password"
-      name="password"
-      placeholder="Enter password"
-      type="password"
-    />
-  </FormGroup>
+        {/* Form Group End Email */}
+        {/* ----------------------------- */}
+        {/* Form Group for Password */}
+        <FormGroup>
+          <Label for="Password">Password</Label>
+          <Input
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            id="password"
+            name="password"
+            placeholder="Enter password"
+            type="password"
+          />
+        </FormGroup>
 
-            {/* Form Group End Password */}
-            <RoomButton type="submit">Login</RoomButton>
-          </Form>
+        {/* Form Group End Password */}
+        <RoomButton onClick={handleSubmit}>Login</RoomButton>
+      </Form>
     </>
   );
 };
