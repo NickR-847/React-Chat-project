@@ -44,7 +44,7 @@ const Login = (props) => {
 
       // Update Token from the App.jsx file
       console.log(data);
-      props.updateToken(data.sessionToken);
+      props.updateToken(data.token);
   } catch (error) {
     console.error("Login error:", error);
   }
