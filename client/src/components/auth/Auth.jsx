@@ -7,10 +7,10 @@ import SignUp from "./signup/SignUp";
 const Auth = (props) => {
     return (
         <>
-           <h1> Hello from Auth </h1>
+           
 
-           <Login/>
-           <SignUp/>
+           <Login updateToken={props.updateToken}/>
+           <SignUp updateToken={props.updateToken}/>
 
           
         </>
