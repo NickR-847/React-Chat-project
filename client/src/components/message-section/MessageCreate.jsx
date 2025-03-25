@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Form, FormGroup, Input, Label, Button } from "reactstrap";
 import { API_MESSAGE_CREATE } from "../../constants/endpoints";
 
@@ -40,6 +40,11 @@ const MessageCreate = (props) => {
 
       // Clearing  input field after submission
       setContent("");
+
+       // Calling fetchMessages function to refresh the message list
+       if (props.fetchMessages) {
+        props.fetchMessages();
+      }
     } catch (error) {
       console.error("Error during message creation:", error);
     }

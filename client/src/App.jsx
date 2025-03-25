@@ -4,6 +4,7 @@ import Auth from "./components/auth/Auth";
 import RoomIndex from "./components/room-section/RoomIndex";
 import MessageIndex from "./components/message-section/MessageIndex";
 import { Container, Row, Col } from "reactstrap";
+import MessageCreate from "./components/message-section/MessageCreate";
 
 function App() {
   // State to store the authentication token
@@ -52,7 +53,10 @@ function App() {
               <Col md="8">
                 {/* Right column for message feed */}
                 {selectedRoom ? (
-                  <MessageIndex token={token} selectedRoom={selectedRoom} />
+                  <>
+                    <MessageIndex token={token} selectedRoom={selectedRoom} />
+                    <MessageCreate token={token} roomId={selectedRoom._id} fetchMessages={() => {}} />
+                  </>
                 ) : (
                   <div className="text-center p-5 secondary-background rounded">
                     <h3>Select a room to start messaging</h3>

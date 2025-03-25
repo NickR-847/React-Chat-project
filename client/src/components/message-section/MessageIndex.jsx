@@ -1,7 +1,8 @@
-
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { API_MESSAGE_VIEW_ALL } from "../../constants/endpoints";
+
+import MessageCard from "./MessageCard";
 
 // !need to import message card
 
@@ -10,7 +11,7 @@ const MessageIndex = (props) => {
   const [messages, setMessages] = useState([]);
 
   //fuction to fetch messages
-  async function fetchMesages() {
+  async function fetchMessages() {
     try {
       //Headers
       let myHeaders = new Headers();
@@ -39,21 +40,25 @@ const MessageIndex = (props) => {
 
   //useEffect hook to fetch messages when the component mounts
   useEffect(() => {
-      fetchMesages()
-  }, []);
+      fetchMessages()
+      //Refetch messages when roomId changes
+  }, [props.roomID]);
 
   return (
-    <>
-      <h1> Messages </h1>
-      <div className="message-list">
-        {messages.map((message,index)=>(
-            //!re do this after making message card
-            <MessageCard key={index} message={message}/>
-        ))}
 
-      </div>
-    </>
-  );
+    <>
+    <h1>Messages</h1>
+    <div className="message-list">
+      {messages.length > 0 ? (
+        messages.map((message, index) => (
+          <MessageCard key={index} message={message} />
+        ))
+      ) : (
+        <p>No messages available.</p>
+      )}
+    </div>
+  </>
+);
 };
 
 export default MessageIndex;

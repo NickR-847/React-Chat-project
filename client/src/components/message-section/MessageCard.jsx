@@ -1,15 +1,20 @@
 import React from "react";
+import { Card, CardBody, CardTitle, CardText, CardFooter } from "reactstrap";
 
 const MessageCard = ({ message }) => {
-    return (
-      <div className="message-card">
-        <h3>{message.user}</h3>
-        <p>{message.content}</p>
-        <small>{new Date(message.createdAt).toLocaleString()}</small>
-      </div>
-    );
-  };
-  
+  return (
+    <Card className="mb-3">
+      <CardBody>
+        <CardTitle tag="h5">{message.user}</CardTitle>
+        <CardText>{message.content}</CardText>
+      </CardBody>
+      <CardFooter className="text-muted">
+        {new Date(message.createdAt).toLocaleString()}
+      </CardFooter>
+    </Card>
+  );
+};
+
   export default MessageCard;
 
   
